@@ -31,7 +31,7 @@ modules:
       - /bin
     sources:
       - type: archive
-        url: https://ftpmirror.gnu.org/gnu/gsl/gsl-2.6.tar.gz
+        url: https://ftp.gnu.org/gnu/gsl/gsl-2.6.tar.gz
         sha256: b782339fc7a38fe17689cb39966c4d821236c28018b6593ddb6fd59ee40786a8
 
   - shared-modules/glu/glu-9.json
@@ -44,8 +44,8 @@ modules:
       - INSTALL_ROOT=/app/scratchdir
     sources:
       - type: archive
-        url: http://download.qt.io/archive/qt/5.15/5.15.1/submodules/qtdatavis3d-everywhere-src-5.15.1.tar.xz
-        sha256: 89ed596ea452a8dd8223d094690606bcccc92962776584aceefcc13f56538c06
+        url: http://download.qt.io/archive/qt/5.15/5.15.2/submodules/qtdatavis3d-everywhere-src-5.15.2.tar.xz
+        sha256: 226a6575d573ad78aca459709722c496c23aee526aa0c38eb7c93b0bea1eb6fd
     post-install:
       - cp -r /app/scratchdir/usr/* /app
       - rm -rf /app/scratchdir
