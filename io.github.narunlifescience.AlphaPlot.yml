@@ -62,14 +62,9 @@ modules:
     sources:
       - type: git
         url: https://github.com/narunlifescience/AlphaPlot.git
-        tag: "1.011"
-        commit: 1bd069e30fb2ef2833b396ef8cb710a431bd8119
+        commit: d9d20016c2ec592bc69b903133592e8822156a4d
       - type: patch
         path: patches/app-path.patch
-      - type: patch
-        path: patches/QPainterPath.patch
-      - type: patch
-        path: patches/metainfo.patch
     post-install:
       - mkdir /app/share/metainfo
       - cp /run/build/alphaplot/data/metainfo.xml /app/share/metainfo/${FLATPAK_ID}.metainfo.xml
