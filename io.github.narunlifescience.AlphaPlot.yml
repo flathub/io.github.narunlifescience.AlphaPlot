@@ -9,7 +9,6 @@ finish-args:
   - --share=ipc
   - --socket=x11
   - --device=dri
-  - --env=SESSION_MANAGER= # required to avoid Qt warning
   - --filesystem=home
 cleanup:
   - /include
@@ -62,9 +61,9 @@ modules:
     sources:
       - type: git
         url: https://github.com/narunlifescience/AlphaPlot.git
-        commit: f7115891aae74a7865807d1cc9e0f153ac32c517
+        commit: 797395d81aa9e9fcc7f7a58ac9282d3aecc352b0
       - type: patch
         path: patches/app-path.patch
     post-install:
       - mkdir /app/share/metainfo
-      - cp /run/build/alphaplot/data/metainfo.xml /app/share/metainfo/${FLATPAK_ID}.metainfo.xml
+      - cp ${FLATPAK_BUILDER_BUILDDIR}/data/metainfo.xml /app/share/metainfo/${FLATPAK_ID}.metainfo.xml
