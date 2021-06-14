@@ -61,7 +61,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/narunlifescience/AlphaPlot.git
-        commit: 7c47198f107a26247acc7233fdbce30c451cdb37
+        commit: d5705f85035cb9f0cef1a01ff84d2c7f47e8ca90
       - type: patch
         path: patches/app-path.patch
     post-install:
