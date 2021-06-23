@@ -1,27 +1,3 @@
-diff --git a/config.pri b/config.pri
-index 6f46619c..c453a39b 100644
---- a/config.pri
-+++ b/config.pri
-@@ -31,7 +31,7 @@ unix {                                                       # Linux / MacOS X
-     plugins.path          = "$$INSTALLBASE/plugins"
-   } else {
-     ### this is what is called "prefix" when using GNU autotools
--    isEmpty(INSTALLBASE): INSTALLBASE = /usr
-+    isEmpty(INSTALLBASE): INSTALLBASE = /app
-     target.path           = "$$INSTALLBASE/bin"
-     documentation.path    = "$$INSTALLBASE/share/doc/alphaplot"
-     manual.path = "$$INSTALLBASE/share/doc/alphaplot/manual"
-@@ -80,8 +80,8 @@ contains(PRESET, linux_all_dynamic) {
-   ### dynamically link against installed system-wide
-   message(Build configuration: Linux all dynamic)
- 
--  INCLUDEPATH   = "$(HOME)/usr/include" $$INCLUDEPATH
--  QMAKE_LIBDIR  = "$(HOME)/usr/lib" $$QMAKE_LIBDIR
-+  INCLUDEPATH   = "/app/include" $$INCLUDEPATH
-+  QMAKE_LIBDIR  = "/app/lib" $$QMAKE_LIBDIR
- 
-   LIBS         += -lGLU -lgsl -lgslcblas
- }
 diff --git a/fitPlugins/exp_saturation/exp_saturation.pro b/fitPlugins/exp_saturation/exp_saturation.pro
 index 37babcc5..c185c1aa 100644
 --- a/fitPlugins/exp_saturation/exp_saturation.pro

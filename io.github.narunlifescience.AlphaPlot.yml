@@ -57,11 +57,13 @@ modules:
       env:
         - QMAKEPATH=/app/lib
     config-opts:
+      - INSTALLBASE=/app
+      - QMAKE_LIBDIR+=/app/lib
       - QMAKE_INCDIR+=/app/include/QtDataVisualization
     sources:
       - type: git
         url: https://github.com/narunlifescience/AlphaPlot.git
-        commit: d5705f85035cb9f0cef1a01ff84d2c7f47e8ca90
+        commit: 045609773438be5a0ce206c9e0d29e9a0b967fec
       - type: patch
         path: patches/app-path.patch
     post-install:
