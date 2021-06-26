@@ -1,6 +1,6 @@
 app-id: io.github.narunlifescience.AlphaPlot
 runtime: org.kde.Platform
-runtime-version: "5.15"
+runtime-version: '5.15'
 sdk: org.kde.Sdk
 command: alphaplot
 rename-icon: alphaplot
@@ -20,9 +20,9 @@ cleanup:
   - /share/aclocal
   - /share/info
   - /share/man
-  - "*.a"
-  - "*.la"
-  - "*.prl"
+  - '*.a'
+  - '*.la'
+  - '*.prl'
 modules:
   - shared-modules/glu/glu-9.json
 
@@ -33,11 +33,11 @@ modules:
       - /bin
     sources:
       - type: archive
-        url: https://ftp.gnu.org/gnu/gsl/gsl-2.6.tar.gz
-        sha256: b782339fc7a38fe17689cb39966c4d821236c28018b6593ddb6fd59ee40786a8
+        url: https://ftp.gnu.org/gnu/gsl/gsl-2.7.tar.gz
+        sha256: efbbf3785da0e53038be7907500628b466152dbc3c173a87de1b5eba2e23602b
         x-checker-data:
           type: anitya
-          project-id: "1267"
+          project-id: '1267'
           stable-only: true
           url-template: https://ftp.gnu.org/gnu/gsl/gsl-$version.tar.gz
 
@@ -67,7 +67,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/narunlifescience/AlphaPlot.git
-        tag: "1.011"
+        tag: '1.011'
         commit: 1bd069e30fb2ef2833b396ef8cb710a431bd8119
       - type: patch
         path: patches/app-path.patch
