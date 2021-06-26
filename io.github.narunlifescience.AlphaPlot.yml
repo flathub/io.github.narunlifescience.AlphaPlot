@@ -24,6 +24,8 @@ cleanup:
   - "*.la"
   - "*.prl"
 modules:
+  - shared-modules/glu/glu-9.json
+
   - name: gsl
     config-opts:
       - --disable-static
@@ -33,8 +35,11 @@ modules:
       - type: archive
         url: https://ftp.gnu.org/gnu/gsl/gsl-2.6.tar.gz
         sha256: b782339fc7a38fe17689cb39966c4d821236c28018b6593ddb6fd59ee40786a8
-
-  - shared-modules/glu/glu-9.json
+        x-checker-data:
+          type: anitya
+          project-id: "1267"
+          stable-only: true
+          url-template: https://ftp.gnu.org/gnu/gsl/gsl-$version.tar.gz
 
   - name: qt5-qtdatavis3d
     buildsystem: qmake
@@ -72,4 +77,4 @@ modules:
         path: patches/metainfo.patch
     post-install:
       - mkdir /app/share/metainfo
-      - cp /run/build/alphaplot/data/metainfo.xml /app/share/metainfo/${FLATPAK_ID}.metainfo.xml
+      - cp ${FLATPAK_BUILDER_BUILDDIR}/data/metainfo.xml /app/share/metainfo/${FLATPAK_ID}.metainfo.xml
