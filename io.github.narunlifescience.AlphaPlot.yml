@@ -23,6 +23,8 @@ cleanup:
   - "*.la"
   - "*.prl"
 modules:
+  - shared-modules/glu/glu-9.json
+
   - name: gsl
     config-opts:
       - --disable-static
@@ -30,10 +32,8 @@ modules:
       - /bin
     sources:
       - type: archive
-        url: https://ftp.gnu.org/gnu/gsl/gsl-2.6.tar.gz
-        sha256: b782339fc7a38fe17689cb39966c4d821236c28018b6593ddb6fd59ee40786a8
-
-  - shared-modules/glu/glu-9.json
+        url: https://ftp.gnu.org/gnu/gsl/gsl-2.7.tar.gz
+        sha256: efbbf3785da0e53038be7907500628b466152dbc3c173a87de1b5eba2e23602b
 
   - name: qt5-qtdatavis3d
     buildsystem: qmake
@@ -63,7 +63,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/narunlifescience/AlphaPlot.git
-        commit: 045609773438be5a0ce206c9e0d29e9a0b967fec
+        commit: 0c8550582110d503b759618fe3b3eb833a11e21e
       - type: patch
         path: patches/app-path.patch
     post-install:
