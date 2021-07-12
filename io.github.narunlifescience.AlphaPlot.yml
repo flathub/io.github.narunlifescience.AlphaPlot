@@ -1,6 +1,6 @@
 app-id: io.github.narunlifescience.AlphaPlot
 runtime: org.kde.Platform
-runtime-version: "5.15"
+runtime-version: '5.15'
 sdk: org.kde.Sdk
 command: alphaplot
 rename-icon: alphaplot
@@ -19,9 +19,9 @@ cleanup:
   - /share/aclocal
   - /share/info
   - /share/man
-  - "*.a"
-  - "*.la"
-  - "*.prl"
+  - '*.a'
+  - '*.la'
+  - '*.prl'
 modules:
   - shared-modules/glu/glu-9.json
 
@@ -63,7 +63,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/narunlifescience/AlphaPlot.git
-        commit: 0c8550582110d503b759618fe3b3eb833a11e21e
+        commit: 40e16c5e3d596158372e9bc4708a9d2ea641cc83
       - type: patch
         path: patches/app-path.patch
     post-install:
