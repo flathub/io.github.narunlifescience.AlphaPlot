@@ -1,6 +1,6 @@
 app-id: io.github.narunlifescience.AlphaPlot
 runtime: org.kde.Platform
-runtime-version: '5.15'
+runtime-version: '5.15-21.08'
 sdk: org.kde.Sdk
 command: alphaplot
 rename-icon: alphaplot
@@ -63,7 +63,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/narunlifescience/AlphaPlot.git
-        commit: 40e16c5e3d596158372e9bc4708a9d2ea641cc83
+        commit: a8073182227201fececf0d5ffecb8538ffca8358
       - type: patch
         path: patches/app-path.patch
     post-install:
