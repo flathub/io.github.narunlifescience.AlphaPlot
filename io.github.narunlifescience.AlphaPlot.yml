@@ -32,8 +32,8 @@ modules:
       - /bin
     sources:
       - type: archive
-        url: https://ftp.gnu.org/gnu/gsl/gsl-2.7.tar.gz
-        sha256: efbbf3785da0e53038be7907500628b466152dbc3c173a87de1b5eba2e23602b
+        url: https://ftp.gnu.org/gnu/gsl/gsl-2.7.1.tar.gz
+        sha256: dcb0fbd43048832b757ff9942691a8dd70026d5da0ff85601e52687f6deeb34b
 
   - name: qt5-qtdatavis3d
     buildsystem: qmake
@@ -63,7 +63,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/narunlifescience/AlphaPlot.git
-        commit: 573ee93d48ba1f370e8488a4bf74a7797c5627e4
+        commit: 6cc107764512709a56a6a769b6d7381f71248dc3
       - type: patch
         path: patches/app-path.patch
     post-install:
