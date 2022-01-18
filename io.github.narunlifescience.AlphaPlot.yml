@@ -71,6 +71,8 @@ modules:
         tag: '1.02'
         commit: 8682095ca5aa923249aa4d183d55d4770573131a
       - type: patch
+        path: patches/metainfo.patch
+      - type: patch
         path: patches/app-path.patch
     post-install:
       - mkdir /app/share/metainfo
