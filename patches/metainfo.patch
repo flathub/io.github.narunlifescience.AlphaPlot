@@ -1,0 +1,13 @@
+diff --git a/data/metainfo.xml b/data/metainfo.xml
+index 09c05464..e8e6b700 100644
+--- a/data/metainfo.xml
++++ b/data/metainfo.xml
+@@ -101,7 +101,7 @@
+         </ul>
+       </description>
+     </release>
+-    <release version="1.011" date="2020-05-06">
++    <release version="1.01.1" date="2020-05-06">
+       <description>
+         <p>Overview of changes in AlphaPlot 1.011</p>
+         <ul>
