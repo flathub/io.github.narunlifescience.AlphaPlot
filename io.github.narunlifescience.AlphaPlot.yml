@@ -9,7 +9,6 @@ finish-args:
   - --share=ipc
   - --socket=x11
   - --device=dri
-  - --env=SESSION_MANAGER= # required to avoid Qt warning
   - --filesystem=home
 cleanup:
   - /include
@@ -49,7 +48,7 @@ modules:
       - INSTALL_ROOT=/app/scratchdir
     sources:
       - type: archive
-        url: http://download.qt.io/archive/qt/5.15/5.15.2/submodules/qtdatavis3d-everywhere-src-5.15.2.tar.xz
+        url: https://download.qt.io/archive/qt/5.15/5.15.2/submodules/qtdatavis3d-everywhere-src-5.15.2.tar.xz
         sha256: 226a6575d573ad78aca459709722c496c23aee526aa0c38eb7c93b0bea1eb6fd
     post-install:
       - cp -r /app/scratchdir/usr/* /app
@@ -63,18 +62,18 @@ modules:
       env:
         - QMAKEPATH=/app/lib
     config-opts:
+      - INSTALLBASE=/app
+      - QMAKE_LIBDIR+=/app/lib
       - QMAKE_INCDIR+=/app/include/QtDataVisualization
     sources:
       - type: git
         url: https://github.com/narunlifescience/AlphaPlot.git
-        tag: '1.011'
-        commit: 1bd069e30fb2ef2833b396ef8cb710a431bd8119
-      - type: patch
-        path: patches/app-path.patch
-      - type: patch
-        path: patches/QPainterPath.patch
+        tag: '1.02'
+        commit: 8682095ca5aa923249aa4d183d55d4770573131a
       - type: patch
         path: patches/metainfo.patch
+      - type: patch
+        path: patches/app-path.patch
     post-install:
       - mkdir /app/share/metainfo
       - cp ${FLATPAK_BUILDER_BUILDDIR}/data/metainfo.xml /app/share/metainfo/${FLATPAK_ID}.metainfo.xml
