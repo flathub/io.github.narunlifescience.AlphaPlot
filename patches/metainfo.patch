@@ -1,8 +1,16 @@
 diff --git a/data/metainfo.xml b/data/metainfo.xml
-index 09c05464..e8e6b700 100644
+index 09c05464..1c311a8b 100644
 --- a/data/metainfo.xml
 +++ b/data/metainfo.xml
-@@ -101,7 +101,7 @@
+@@ -9,6 +9,7 @@
+   <url type="bugtracker">https://github.com/narunlifescience/AlphaPlot/issues</url>
+   <url type="donation">https://www.patreon.com/alphaplot</url>
+   <url type="help">https://alphaplot.sourceforge.io/wiki/index.php</url>
++  <launchable type="desktop-id">alphaplot.desktop</launchable>
+   <summary>AlphaPlot is a free application for Scientific Data Analysis and Visualization</summary>
+   <description>
+     <p>
+@@ -101,7 +102,7 @@
          </ul>
        </description>
      </release>
@@ -11,3 +19,33 @@ index 09c05464..e8e6b700 100644
        <description>
          <p>Overview of changes in AlphaPlot 1.011</p>
          <ul>
+@@ -141,29 +142,6 @@
+         </ul>
+       </description>
+     </release>
+-    <release version="alpha-test2" date="2016-05-04">
+-      <description>
+-        <p>Overview of changes in AlphaPlot alpha-test2</p>
+-        <ul>
+-          <li>add basic error detection to Qt Script</li>
+-          <li>add a basic Syntax highlighter for scripts and functions</li>
+-          <li>add QtScript with debugging to Alphaplot basic data structures with cell to cell data manipulation ability(Table and Matrix)</li>
+-          <li>add add/remove layer to graph2d window</li>
+-          <li>use default cascade function</li>
+-          <li>fix mxe compile errors</li>
+-          <li>drop QT3 related stuff</li>
+-          <li>use a float button instead of old block one in table and matrix to access control UI</li>
+-          <li>remember normal window state when a user closes a window in maximized state</li>
+-          <li>added c++ 11 Support</li>
+-          <li>remove liborigin and python support for now</li>
+-          <li>make scripting console interactive (rewrite the entire class)</li>
+-          <li>modernize icons and an icon handling class</li>
+-          <li>add a lock-unlock functionality for toolbars and dock widgets</li>
+-          <li>compartmentalize various aspects like scripting, 3d plots, etc. to separate directories</li>
+-          <li>fix old code warnings (replace old C style casting, remove hardcoded colors, use initializer list when possible, Clean up Application window class, give better meaningful names for variables, etc.)</li>
+-        </ul>
+-      </description>
+-    </release>
+   </releases>
+   <categories>
+     <category>Education</category>
