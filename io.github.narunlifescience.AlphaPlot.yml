@@ -74,6 +74,8 @@ modules:
         path: patches/metainfo.patch
       - type: patch
         path: patches/app-path.patch
+      - type: patch
+        path: patches/icon.patch
     post-install:
       - mkdir /app/share/metainfo
       - cp ${FLATPAK_BUILDER_BUILDDIR}/data/metainfo.xml /app/share/metainfo/${FLATPAK_ID}.metainfo.xml
