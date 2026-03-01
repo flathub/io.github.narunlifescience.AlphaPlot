@@ -1,6 +1,6 @@
 app-id: io.github.narunlifescience.AlphaPlot
 runtime: org.kde.Platform
-runtime-version: 5.15-23.08
+runtime-version: 5.15-25.08
 sdk: org.kde.Sdk
 command: alphaplot
 rename-icon: alphaplot
@@ -77,5 +77,4 @@ modules:
       - type: patch
         path: patches/icon.patch
     post-install:
-      - mkdir /app/share/metainfo
-      - cp ${FLATPAK_BUILDER_BUILDDIR}/data/metainfo.xml /app/share/metainfo/${FLATPAK_ID}.metainfo.xml
+      - install -Dm644 ${FLATPAK_BUILDER_BUILDDIR}/data/metainfo.xml /app/share/metainfo/${FLATPAK_ID}.metainfo.xml
