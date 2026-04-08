@@ -1,6 +1,6 @@
 app-id: io.github.narunlifescience.AlphaPlot
 runtime: org.kde.Platform
-runtime-version: '5.15-21.08'
+runtime-version: 6.10
 sdk: org.kde.Sdk
 command: alphaplot
 rename-icon: alphaplot
@@ -32,24 +32,37 @@ modules:
       - /bin
     sources:
       - type: archive
-        url: https://ftp.gnu.org/gnu/gsl/gsl-2.7.1.tar.gz
-        sha256: dcb0fbd43048832b757ff9942691a8dd70026d5da0ff85601e52687f6deeb34b
+        url: https://ftp.gnu.org/gnu/gsl/gsl-2.8.tar.gz
+        sha256: 6a99eeed15632c6354895b1dd542ed5a855c0f15d9ad1326c6fe2b2c9e423190
+        x-checker-data:
+          type: anitya
+          project-id: 1267
+          stable-only: true
+          url-template: https://ftp.gnu.org/gnu/gsl/gsl-$version.tar.gz
 
-  - name: qt5-qtdatavis3d
-    buildsystem: qmake
-    cleanup:
-      - /bin
-    make-install-args:
-      - INSTALL_ROOT=/app/scratchdir
+  - name: qt6-qtdatavis3d
+    buildsystem: cmake-ninja
+    build-options:
+      config-opts:
+        - -DQT_NO_PACKAGE_VERSION_CHECK=TRUE
+    builddir: true
     sources:
       - type: archive
-        url: http://download.qt.io/archive/qt/5.15/5.15.2/submodules/qtdatavis3d-everywhere-src-5.15.2.tar.xz
-        sha256: 226a6575d573ad78aca459709722c496c23aee526aa0c38eb7c93b0bea1eb6fd
+        url: https://download.qt.io/archive/qt/6.10/6.10.2/submodules/qtdatavis3d-everywhere-src-6.10.2.tar.xz
+        sha256: b769408bf4a3d03220331d5de59636fdf97a21831d01d3fd141c36c698355bc1
     post-install:
-      - cp -r /app/scratchdir/usr/* /app
-      - rm -rf /app/scratchdir
-      - ln -s /app/lib/*/*.so* /app/lib
-      - sed -e 's@$$QT_MODULE_LIB_BASE@/app/lib@' -i /app/lib/mkspecs/modules/*.pri
+      - mv /app/mkspecs /app/lib
+      - ln -sr ${FLATPAK_DEST}/lib/${FLATPAK_ARCH}-linux-gnu/libQt*.so* -t ${FLATPAK_DEST}/lib/
+      - sed -i 's/\\([0-9]\\+\\.[0-9]\\+\\)\\.[0-9]\\+ ${_Qt6.*_FIND_VERSION_EXACT}/\\1/'
+        ${FLATPAK_DEST}/lib/${FLATPAK_ARCH}-linux-gnu/cmake/Qt6*/Qt6*Config.cmake
+      - sed -e 's@PATHS \"${CMAKE_CURRENT_LIST_DIR}/..\" NO_DEFAULT_PATH@PATHS \"${CMAKE_CURRENT_LIST_DIR}/..\"
+        \"/usr/lib/${CMAKE_CXX_LIBRARY_ARCHITECTURE}/cmake/\" NO_DEFAULT_PATH@' -i
+        ${FLATPAK_DEST}/lib/${FLATPAK_ARCH}-linux-gnu/cmake/Qt6*/Qt6*Config.cmake
+      - sed -e 's@\\($$QT_MODULE_BIN_BASE\\)@\\1 '${FLATPAK_DEST}'/bin @' -i ${FLATPAK_DEST}/lib/mkspecs/modules/*.pri
+      - sed -e 's@\\($$QT_MODULE_INCLUDE_BASE \\)@\\1'${FLATPAK_DEST}'/include @'
+        -i ${FLATPAK_DEST}/lib/mkspecs/modules/*.pri
+      - sed -e 's@$$QT_MODULE_INCLUDE_BASE/@'${FLATPAK_DEST}'/include/@g' -i ${FLATPAK_DEST}/lib/mkspecs/modules/*.pri
+      - sed -e 's@$$QT_MODULE_LIB_BASE@'${FLATPAK_DEST}'/lib@g' -i ${FLATPAK_DEST}/lib/mkspecs/modules/*.pri
 
   - name: alphaplot
     buildsystem: qmake
@@ -60,14 +73,11 @@ modules:
       - INSTALLBASE=/app
       - QMAKE_LIBDIR+=/app/lib
       - QMAKE_INCDIR+=/app/include/QtDataVisualization
+      - CONFIG+=flatpak
     sources:
       - type: git
-        url: https://github.com/narunlifescience/AlphaPlot.git
-        commit: adc6110ba4548f264df006894052b3304ce89009
-      - type: patch
-        path: patches/metainfo.patch
-      - type: patch
-        path: patches/app-path.patch
+        url: https://github.com/filipestevao/AlphaPlot
+        branch: release-1.3.0
+        commit: e1d92fd31de4d9cd7d04e438db98031f8d35e070
     post-install:
-      - mkdir /app/share/metainfo
-      - cp ${FLATPAK_BUILDER_BUILDDIR}/data/metainfo.xml /app/share/metainfo/${FLATPAK_ID}.metainfo.xml
+      - install -Dm644 ${FLATPAK_BUILDER_BUILDDIR}/data/metainfo.xml /app/share/metainfo/${FLATPAK_ID}.metainfo.xml
